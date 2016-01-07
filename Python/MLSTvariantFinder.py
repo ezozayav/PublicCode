@@ -38,9 +38,10 @@ PARSER.add_argument('-d', '--locus_variant_distance',
                           the ST table (below).', required=True)
 PARSER.add_argument('-t', '--table_of_STs',
                     help='Comma-delimited text file with first column as +\
-                          sample name, second column the ST, then the +\
-                          subsequent seven columns being the allele number +\
-                          for each locus. No header row.', required=True)
+                          sample name, second column as ST, then the +\
+                          subsequent seven columns as the allele number +\
+                          for each locus. Expects a header row +\
+                          in input file.', required=True)
 ARGS = PARSER.parse_args()
 
 def find_st(st_file):
@@ -68,4 +69,4 @@ ST = ARGS.reference_sequence_type
 # Execute the find_STs function, comparing the isolate MLSTs to the reference
 find_st(ARGS.table_of_STs)
 
-print 'Done\n'
+print 'Done'
