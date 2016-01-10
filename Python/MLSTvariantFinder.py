@@ -2,14 +2,14 @@
 """
 #############################
 #dr.mark.schultz@gmail.com  #
-#23-Nov-2015                #
+#08-Jan-2016                #
 #github: schultzm           #
 #############################
 
 This module takes a reference ST (a combination of alleles) and a table of
-isolate STs (allele combinations).  At a user specified distance – the number
-of loci different to the reference ST – the script will output any isolate STs
-that are within this range of the reference.
+isolate STs (allele combinations).  At a user specified distance – that is, the 
+number of loci different to the reference ST – the script will output any isolate 
+STs that are within this range of the reference.
 
 Example usage:
     python MLSTvariantFinder.py -s 2 2 2 2 2 2 2 -d 4 -t isolate_MLSTs.csv
@@ -17,7 +17,8 @@ Example usage:
 The above command will execute this module, and compare any isolate MLST
 profile in the isolate_MLSTs.csv file to the reference ST of '2 2 2 2 2 2 2'.
 The '-d 4' in the command means output to file any isolate within four
-differences to the reference ST.
+differences to the reference ST.  To gather all of the single locus variants, 
+use -d 1, the get the doubles use -d 2, etc.
 """
 
 import argparse
