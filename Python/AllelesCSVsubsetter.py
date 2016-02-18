@@ -16,9 +16,9 @@ import os
 
 #set up the arguments parser to deal with the command line input
 parser = argparse.ArgumentParser(description = "Subset an Alleles.csv file by \
-                                    pulling out regions between start and stop\
-                                    coordinates in tab delimited text file (no\
-                                    header).")
+                                 pulling out regions between start and stop\
+                                 coordinates in tab delimited text file (no\
+                                 header).")
 parser.add_argument('-i', '--input', help = 'Input alleles.csv to pull the \
                     sub-alleles.csv from', required=True)
 parser.add_argument('-r', '--regions', help = 'Regions to target', \
