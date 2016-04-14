@@ -39,7 +39,12 @@ def split_core_tab(core_tab_file, file_contigs):
         with open(core_tab_file, "r") as input_handle:
             first = next(input_handle)
             first = first.rstrip().split("\t")[1:-4]
-            with open(base+"_"+i+"_alleles.csv", "w") as output_handle:
+            illegal_chars = '\/:*?"<>|^ '
+            cntig_name = i
+            for char in illegal_chars:
+                if char in cntig_name:
+                    cntig_name = cntig_name.replace(char, "_")
+            with open(base+"_"+cntig_name+"_alleles.csv", "w") as output_handle:
                 output_handle.write(",".join(first)+"\n")
                 for line in input_handle:
                     line_vals = line.rstrip().split("\t")
