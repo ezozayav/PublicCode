@@ -5,7 +5,7 @@
 dr.mark.schultzm@gmail.com
 github: schultzm
 Converts tseemann Nullarbor formatted core.tab file to dedwards RedDog 
-Alleles.csv format.  Outputs one file per 'chromosome'.
+Alleles.csv format.  Outputs one file per alignment contig.
 """
 
 import argparse
