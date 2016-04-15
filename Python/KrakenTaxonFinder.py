@@ -16,7 +16,7 @@ PARSER = argparse.ArgumentParser(description="Find the best matched taxonomic \
 PARSER.add_argument("-i", "--input", help="Input kraken table file(s)",
                     nargs="+", required=True)
 PARSER.add_argument("-n", "--nlines", help="Number of lines to search infiles",
-                    type=int, default=10, required=False)
+                    type=int, default=11, required=False)
 PARSER.add_argument("-t", "--tax_level", help="D, P, C, O, F, G, S",
                     default='S', required=False)
 ARGS = PARSER.parse_args()
