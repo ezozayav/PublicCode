@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-13th Apr 2016
+15th Apr 2016
 dr.mark.schultzm@gmail.com
 github: schultzm
 Find the line containing the best taxonomic hit in Kraken output tables.
@@ -42,13 +42,13 @@ def get_taxon(file_head, tax_level):
             for j in file_head:
                 if i in j:
                     hit.append(j)
-    #strip leading whitespaces from elements in list.
+    #strip leading whitespaces from list elements.
     hit = [[s.lstrip() for s in inner] for inner in hit]
     return hit
 
 for i in ARGS.input:
     best_hit = get_taxon(file_head(i, ARGS.nlines), ARGS.tax_level)
-    #Flatten list by one level and print it
-    best_hit = '\t'.join([str(x) for x in best_hit])
-    #Print result to screen.  If desired, output to file with '> output.txt'.
-    print i, best_hit
+    #Flatten best_hit by one level
+    flattened = [val for sublist in best_hit for val in sublist]
+    #Print tsv to screen.  If desired, output to file with '> output.tab'.
+    print i+'\t'+'\t'.join(flattened)
