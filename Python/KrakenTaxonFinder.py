@@ -46,6 +46,7 @@ def get_taxon(file_head, tax_level):
     hit = [[s.lstrip() for s in inner] for inner in hit]
     return hit
 
+print "File\tPercent_reads\tN_reads_clade\tN_reads_taxon\tPhylo_rank\tNCBI_taxonomy\tScientific_name"
 for i in ARGS.input:
     best_hit = get_taxon(file_head(i, ARGS.nlines), ARGS.tax_level)
     #Flatten best_hit by one level
