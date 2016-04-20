@@ -11,7 +11,10 @@ Arguments in this order:
     2) treeformat           ('nexus' or 'newick')
 
 Example usage:
-./distMatrices.R treefile.tree treeformat
+#first do make the R script executable by doing:
+chmod 777 copheneticDistMatrixCalculator.R
+#then execute it by doing:
+./copheneticDistMatrixCalculator.R treefile.tree treeformat
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \n\n")
 
