@@ -55,16 +55,18 @@ readtree = function(treefile, treeformat){
 
 library(ape)
 tree = readtree(tree_file, tree_fmt)
+#to save the tree plot to file uncomment the next three lines
 #pdf("test.tree.plot.pdf")
 #plot.phylo(tree)
 #dev.off()
 cophen_dist = cophenetic.phylo(tree)
 cophen_dist_ordered=cophen_dist[order(colnames(cophen_dist)),order(colnames(cophen_dist))]
-head(cophen_dist)
-class(cophen_dist)
+#to preview the distance matrix and see its class, uncomment the next two lines
+#head(cophen_dist)
+#class(cophen_dist)
 out_file = paste(tree_file, ".dist.tab", sep="")
 write.table(cophen_dist_ordered, out_file, row.names = TRUE, sep=",", na = "", qmethod="double")
-#to read it in
+#to read it in the newly created out_file for further analysis do:
 #m=read.table(outfile, header=T, sep=",", row.names=1, check.names=F, as.is=T)
 
 cat("Processing completed in (seconds):\n")
