@@ -58,6 +58,7 @@ m_test = mantel(ma, mb, corr_method, n_perms)
 #"call", "method", "statistic", "signif", "perm", "permutations" "control" 
 cat(paste(paste(matrix_a, "vs", matrix_b, sep=" "), m_test$method, 
       m_test$statistic, m_test$signif, m_test$permutations, sep="\t"))
+cat("\n")
 sink()
 
 cat("Processing completed in (seconds):\n")
