@@ -51,7 +51,7 @@ library(vegan)
 ma = read.table(matrix_a, header=T, sep=",", row.names=1, check.names=F, as.is=T)
 mb = read.table(matrix_b, header=T, sep=",", row.names=1, check.names=F, as.is=T)
 
-sink(file=paste("MantelTest_", matrix_a, "_", matrix_b, ".txt", sep = ""))
+sink(file=paste("MantelTest_", matrix_a, "_vs_", matrix_b, ".txt", sep = ""))
 cat("Comparison\tMethod\tStatistic\tSignificance\tPermutations\n")
 m_test = mantel(ma, mb, corr_method, n_perms)
 #m_test_names = names(m_test)
