@@ -23,9 +23,9 @@ import os
 import linecache
 
 #set up the arguments parser to deal with the command line input
-PARSER = argparse.ArgumentParser(description="Sample sliding windows along\
-                                 the length of an alignment in alleles.csv \
-                                 format")
+PARSER = argparse.ArgumentParser(description="Sample tiled non-overlapping \
+                                 windows along the length of an alignment \
+                                 in alleles.csv format")
 PARSER.add_argument("-i", "--input", help="Input alleles.csv from which to \
                     pull the tiled windows", required=True)
 PARSER.add_argument("-w", "--window_size", help="Size of tiled windows \
