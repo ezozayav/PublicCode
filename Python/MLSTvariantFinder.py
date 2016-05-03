@@ -49,7 +49,7 @@ def find_st(st_file):
     """Compare the allele profile of each isolate to the reference ST."""
     with open(st_file, 'r') as input_handle:
         with open(os.path.splitext(st_file)[0]+'_'+ARGS.locus_variant_distance+
-                  'LociVariants.csv', 'w') as sample_list:
+                  'LociVariants.tab', 'w') as sample_list:
             # Write the header line of the input file to output file.
             sample_list.write(input_handle.readline())
             # Process all trailing lines in the input file.
