@@ -25,23 +25,23 @@ import argparse
 import os
 
 #set up the argument parser
-PARSER = argparse.ArgumentParser(description="Finds all variants within a +\
-                                              designated range of a +\
+PARSER = argparse.ArgumentParser(description="Finds all variants within a \
+                                              designated range of a \
                                               reference ST")
 PARSER.add_argument('-s', '--reference_sequence_type', nargs='+',
-                    help='Reference sequence type (for Pasteur scheme, this +\
-                          is seven loci, space delimited), +\
+                    help='Reference sequence type (for Pasteur scheme, this \
+                          is seven loci, space delimited), \
                           e.g., \'2 2 2 2 2 2 2\'', required=True)
 PARSER.add_argument('-d', '--locus_variant_distance',
-                    help='Distance (input as an integer = up to this number +\
-                          of loci different to reference ST) from reference +\
-                          ST (above) within which to gather other STs from +\
+                    help='Distance (input as an integer = up to this number \
+                          of loci different to reference ST) from reference \
+                          ST (above) within which to gather other STs from \
                           the ST table (below).', required=True)
 PARSER.add_argument('-t', '--table_of_STs',
-                    help='Comma-delimited text file with first column as +\
-                          sample name, second column as ST, then the +\
-                          subsequent seven columns as the allele number +\
-                          for each locus. Expects a header row +\
+                    help='Comma-delimited text file with first column as \
+                          sample name, second column as ST, then the \
+                          subsequent seven columns as the allele number \
+                          for each locus. Expects a header row \
                           in input file.', required=True)
 ARGS = PARSER.parse_args()
 
