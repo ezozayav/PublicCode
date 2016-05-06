@@ -8,7 +8,6 @@ range (start=x1, stop=x2).
 import argparse
 from Bio import AlignIO
 from Bio.Alphabet import generic_dna
-from Bio.Nexus import Nexus
 import os
 import sys
 
