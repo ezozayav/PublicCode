@@ -20,7 +20,7 @@ import itertools
 parser = argparse.ArgumentParser(description = "Will read in an alignment in any format, and spit out only the variant sites to a new nexus-formatted alignment.")
 parser.add_argument('-n', '--filename', help = "Name of input file.", required = True)
 parser.add_argument('-i', '--informat', help = "File format of input. e.g., genbank, fasta, phylip", required = True)
-parser.add_argument('-g', '--gap_char', help = "Exact gap character being used", default = "-", required = True)
+parser.add_argument('-g', '--gap_char', help = "Exact gap character being used", required = True)
 args = parser.parse_args()
 
 #convert files
