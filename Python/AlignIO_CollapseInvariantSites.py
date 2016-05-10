@@ -20,10 +20,11 @@ import itertools
 parser = argparse.ArgumentParser(description = "Will read in an alignment in any format, and spit out only the variant sites to a new nexus-formatted alignment.")
 parser.add_argument('-n', '--filename', help = "Name of input file.", required = True)
 parser.add_argument('-i', '--informat', help = "File format of input. e.g., genbank, fasta, phylip", required = True)
+parser.add_argument('-g', '--gap_char', help = "Exact gap character being used", default = "-", required = True)
 args = parser.parse_args()
 
 #convert files
-def read_collapse(file, informat):
+def read_collapse(file, informat, gapchar):
 	with open(file, 'r') as input_handle:
 
 		alignment = AlignIO.read(input_handle, informat, alphabet=generic_dna)
@@ -44,7 +45,7 @@ def read_collapse(file, informat):
 			C = i[1]['C']
 			G = i[1]['G']
 			T = i[1]['T']
-			gap = i[1]['-']
+			gap = i[1][gapchar]
 			x = [gap, A, C, G, T]
 			y = []
 			for j in x:
@@ -84,6 +85,6 @@ def read_collapse(file, informat):
 			print 'Writing collapsed alignment to:',file+'_collapsed.nexus\n'
 			combined.write_nexus_data(output_handle)
 
-read_collapse(args.filename, args.informat.replace('.',''))
+read_collapse(args.filename, args.informat.replace('.',''), args.gap_char)
 
 print "\nDone.\n"
