@@ -1,4 +1,4 @@
-#!/usr/bin/Rscript
+#!/usr/bin/env Rscript
 # make this script executable by doing 'chmod +x MaskAllelesCSVsitesClonalML.R'
 # dr.mark.schultz@gmail.com, github: schultzm
 # date: "11 September 2015"
