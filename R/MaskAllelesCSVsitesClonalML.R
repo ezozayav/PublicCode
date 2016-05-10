@@ -76,26 +76,28 @@ blocks[,"End"] = as.integer(blocks[,"End"]) # Convert the block positions to int
 cat("\n", blocks_file, "('blocks.tsv') looks like this:", "\n")
 head(blocks)
 
-# Mutate the sites specified by blocks in the alleles.csv file to gapChar
-for(i in 1:nrow(blocks))
-{
-    alleles_col_to_mutate = blocks[i,"Node"]
-    if(is.element(alleles_col_to_mutate, colnames(alleles)))
-    {
-        for(j in 1:nrow(alleles))
-        {
-            if((as.integer(blocks[i,"Beg"]) <= alleles[j,1]) & (as.integer(blocks[i,"End"]) >= alleles[j,1]))
-            {
-                alleles[j, alleles_col_to_mutate] = maskChar
-            }
-        }
+#find which Nodes of the blocks file are isolate names in alleles
+blocks=blocks[blocks$Node %in% colnames(alleles),]
+
+#split up the blocks into isolates to reduce loop sizes
+blocks=split(blocks, blocks$Node)
+
+#go through each split blocks and replace alleles with pos between columns
+#2 and 3 of the block with the maskChar
+for(i in 1:length(names(blocks))){
+    working_blocks = blocks[i][[1]]
+    isolate=working_blocks[1,1]
+    for(j in 1:nrow(working_blocks)){
+        alleles[which(alleles[,1]>=working_blocks[j,2]&alleles[,1]<=working_blocks[j,3]),isolate]=maskChar
     }
 }
+
+#replace user-defined gaps with the maskChar
 alleles[alleles==existingGapChar] = maskChar
-cat("Successfully processed the files.\n")
-# write out the data
+
+## write out the data
 out_file = paste(gsub(".csv", "", alleles_file), "_masked.csv", sep="")
-cat("Saving output to:", out_file, "\n")
+#cat("Saving output to:", out_file, "\n")
 write.csv(alleles, out_file, row.names = FALSE, na = "", quote = FALSE)
 cat("Processing completed in (seconds):\n")
 proc.time() - ptm
