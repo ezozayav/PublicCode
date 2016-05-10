@@ -68,13 +68,15 @@ cat("----\n")
 
 # Read in and preview the data:
 alleles = read.csv(file = alleles_file, header=TRUE, check.names = FALSE, as.is = TRUE, sep = ",")
-cat("\n", alleles_file, "('x_alleles.csv') looks like this:", "\n")
-head(alleles)
+#turn on following two lines for debugging
+#cat("\n", alleles_file, "('x_alleles.csv') looks like this:", "\n")
+#head(alleles)
 blocks = read.csv(file = blocks_file, header=TRUE, check.names = FALSE, as.is = TRUE, sep = "\t")
 blocks[,"Beg"] = as.integer(blocks[,"Beg"]) # Convert the block positions to integers
 blocks[,"End"] = as.integer(blocks[,"End"]) # Convert the block positions to integers
-cat("\n", blocks_file, "('blocks.tsv') looks like this:", "\n")
-head(blocks)
+#turn on following two lines for debugging
+#cat("\n", blocks_file, "('blocks.tsv') looks like this:", "\n")
+#head(blocks)
 
 #find which Nodes of the blocks file are isolate names in alleles
 blocks=blocks[blocks$Node %in% colnames(alleles),]
