@@ -12,9 +12,9 @@ import os
 import sys
 
 #set up the arguments parser to deal with the command line input
-PARSER = argparse.ArgumentParser(description="Extract sub-alignment from master\
+PARSER = argparse.ArgumentParser(description="Extract sub-alignment from master \
                                  alignment by alignment position (column) \
-                                 range (start=x1, stop=x2). Converts between\
+                                 range (start=x1, stop=x2). Converts between \
                                  formats.")
 PARSER.add_argument("-a", "--alignment", help="Input alignment (BioPython \
                     supported formats)",
