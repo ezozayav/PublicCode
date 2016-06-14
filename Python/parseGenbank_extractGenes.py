@@ -27,9 +27,9 @@ def extract_genes(file, outformat):
 		print "Parsing",file,"..."
 		accession_no = str(os.path.splitext(file)[0])
 		try:
+			#c will be used to append a number to ensure unique file headers
 			c = 1
 			for record in SeqIO.parse(handle, "genbank"):
-# 				print record
 			#check if sequence included in genbank file
 				if record.seq.count("N")==len(record.seq):
 					print "No sequence in file.  Moving onto next file."
@@ -37,7 +37,6 @@ def extract_genes(file, outformat):
 				else:
 					alphabet_type = str(record.seq.alphabet)
 					if "DNA" in alphabet_type:
-						#c will be used to append a number to ensure unique file headers
 						#iterate through the record features (e.g., 'gene', 'CDS' etc.)
 						for i in range(0, len(record.features)):
 							#only consider features that are CDS (coding sequences)
