@@ -1,7 +1,7 @@
 ##########################
 #dr.mark.schultz@gmail.com
 #github: schultzm
-#170215
+#170215, updated 20160614
 ##########################
 
 from Bio import SeqIO
@@ -27,7 +27,9 @@ def extract_genes(file, outformat):
 		print "Parsing",file,"..."
 		accession_no = str(os.path.splitext(file)[0])
 		try:
+			c = 1
 			for record in SeqIO.parse(handle, "genbank"):
+# 				print record
 			#check if sequence included in genbank file
 				if record.seq.count("N")==len(record.seq):
 					print "No sequence in file.  Moving onto next file."
@@ -36,7 +38,6 @@ def extract_genes(file, outformat):
 					alphabet_type = str(record.seq.alphabet)
 					if "DNA" in alphabet_type:
 						#c will be used to append a number to ensure unique file headers
-						c = 1
 						#iterate through the record features (e.g., 'gene', 'CDS' etc.)
 						for i in range(0, len(record.features)):
 							#only consider features that are CDS (coding sequences)
@@ -71,15 +72,16 @@ def extract_genes(file, outformat):
 									print "CDS '"+gene_name+"' from accesion "+accession_no+" written to '"+outfile_name+"'."
 									SeqIO.write(record_new, outfile_name, outformat)
 								c+=1
-						successfully_parsed_files.append(file)
 					else:
 						print "Sequence 'alphabet' is "+alphabet_type+". Unable to extract gene DNA sequence.  Moving onto next file in list."
 						files_not_in_DNA_format.append(file)
+			successfully_parsed_files.append(file)
 		#raise error if Genbank file cannot be parsed, and continue without this file.
 		except:
 			print "ERROR: Genbank parsing of file",file,"failed.  Refer to traceback() error below.  If no error reported below (i.e., you are reading this message as redirected screen output in log file, refer to the traceback() that was output to the screen before opening this file, or re-run this script without redirecting the screen output."
 			traceback.print_exc()
 			files_failed_parsing.append(file)
+
 
 #for logging purposes on processing many input files
 successfully_parsed_files = []
