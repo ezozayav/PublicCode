@@ -20,7 +20,7 @@ import itertools
 parser = argparse.ArgumentParser(description = "Will read in an alignment in any format, and spit out only the variant sites to a new nexus-formatted alignment.")
 parser.add_argument('-n', '--filename', help = "Name of input file.", required = True)
 parser.add_argument('-i', '--informat', help = "File format of input. e.g., genbank, fasta, phylip", required = True)
-parser.add_argument('-g', '--gap_char', help = "Exact gap character being used", required = True)
+parser.add_argument('-g', '--gap_char', help = "Exact gap character being used. Default = 'None'", default=None, required = False)
 args = parser.parse_args()
 
 #convert files
@@ -45,8 +45,13 @@ def read_collapse(file, informat, gapchar):
 			C = i[1]['C']
 			G = i[1]['G']
 			T = i[1]['T']
-			gap = i[1][gapchar]
-			x = [gap, A, C, G, T]
+			if gapchar != None:
+				print gapchar
+				gap = i[1][gapchar]
+				x = [gap, A, C, G, T]
+			if gapchar == None:
+				x = [A, C, G, T]
+				print x
 			y = []
 			for j in x:
 				if j > 0:
