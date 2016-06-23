@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-20160623_1120
+20160623_2130
 github schultzm
 dr.mark.schultz@gmail.com
 
@@ -18,11 +18,11 @@ Example usage (in parallel):
 '''
 
 import argparse
-from Bio.Alphabet import generic_dna
 import os
+from Bio.Alphabet import generic_dna
 from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 
 #set up the arguments parser to deal with the command line input
 PARSER = argparse.ArgumentParser(description='Get CDS DNA seq(s) from genbanks')
