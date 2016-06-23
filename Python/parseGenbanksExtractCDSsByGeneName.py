@@ -12,7 +12,7 @@ Example usage (in series):
 
 Example usage (in parallel):
     Save your gene list to txt file, one gene name per line in file, then use:
-    nice parallel -j 72 python parseGenbanksExtractCDSsByGeneName.py \
+    nice parallel -j 36 python parseGenbanksExtractCDSsByGeneName.py \
     -g *.gbk -c {} :::: core_genes_list.txt
 
 '''
