@@ -78,6 +78,6 @@ for i in ARGS.CDS_names:
         seq = getDNAseq(i, j)
         SEQS.append(seq)
     #use filter on SEQS to get rid of 'None' objects in list
-    writeFasta(SEQS, i)
+    writeFasta(filter(None, SEQS), i)
 
 print '\nDone\n'
