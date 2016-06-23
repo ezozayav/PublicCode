@@ -64,9 +64,11 @@ def writeFasta(seqs, cds_name):
     '''
     Takes the list of sequences stored in SEQS global and writes them to file.
     '''
-    with open(cds_name+'.fasta', 'w') as output_handle:
+    outname = cds_name+'.fasta'
+    with open(outname, 'w') as output_handle:
         for i in seqs:
             SeqIO.write(i, output_handle, 'fasta')
+        print 'Written sequences to '+outname+'.'
 
 #For every locus, check each genbank file and return the locus.
 #Write the locus to file.
@@ -79,5 +81,3 @@ for i in ARGS.CDS_names:
         SEQS.append(seq)
     #use filter on SEQS to get rid of 'None' objects in list
     writeFasta(filter(None, SEQS), i)
-
-print '\nDone\n'
