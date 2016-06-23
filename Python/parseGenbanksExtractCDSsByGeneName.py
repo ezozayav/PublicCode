@@ -1,10 +1,20 @@
 #!/usr/bin/env python
 
 '''
-Extract CDS DNA sequences from gbk files.
 20160623_1120
 github schultzm
 dr.mark.schultz@gmail.com
+
+Extract CDS DNA sequences from gbk files using the CDS gene name.
+
+Example usage (in series):
+    python parseGenbanksExtractCDSsByGeneName.py -g *.gbk -c accA accB_2 accD
+
+Example usage (in parallel):
+    Save your gene list to txt file, one gene name per line in file, then use:
+    nice parallel -j 72 python parseGenbanksExtractCDSsByGeneName.py \
+    -g *.gbk -c {} :::: core_genes_list.txt
+
 '''
 
 import argparse
@@ -16,10 +26,12 @@ from Bio.Seq import Seq
 
 #set up the arguments parser to deal with the command line input
 PARSER = argparse.ArgumentParser(description='Get CDS DNA seq(s) from genbanks')
-PARSER.add_argument('-c', '--CDS_names', help='Names of CDSs', nargs='+',
+PARSER.add_argument('-c', '--CDS_names', help='Names of CDSs, separated by \
+                    whitespace. ', nargs='+',
                     required=False)
 PARSER.add_argument('-g', '--genbank_files', 
-                    help="Input genbanks sequence(s).", nargs='+', 
+                    help='Input genbanks sequence(s), separated by \
+                    whitespace or use a wildcard \'*\'', nargs='+', 
                     required=True)
 ARGS = PARSER.parse_args()
 
@@ -60,6 +72,7 @@ def writeFasta(seqs, cds_name):
 #Write the locus to file.
 for i in ARGS.CDS_names:
     SEQS = []
+    print '\nProcessing '+i+' in:'
     for j in ARGS.genbank_files:
         print j
         seq = getDNAseq(i, j)
