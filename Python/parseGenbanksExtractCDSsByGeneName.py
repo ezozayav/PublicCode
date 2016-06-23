@@ -62,7 +62,7 @@ def getDNAseq(cds_name, gbk):
 
 def writeFasta(seqs, cds_name):
     '''
-    Takes the list of sequences stored in SEQS global and writes them to file.
+    Takes the list of sequences stored in seqs and writes them to file.
     '''
     outname = cds_name+'.fasta'
     with open(outname, 'w') as output_handle:
