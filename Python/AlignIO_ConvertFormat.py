@@ -15,7 +15,8 @@ from Bio.Alphabet import generic_dna
 
 #set up the arguments parser to deal with the command line input
 PARSER = argparse.ArgumentParser(description='Convert DNA alignments between \
-                                 BioPython-supported formats.')
+                                 BioPython-supported formats.  Handles \
+                                 many input alignments (with e.g., *.fasta).')
 PARSER.add_argument('-a', '--alignment', help='Input alignment(s)', nargs='+',
                     required=True)
 PARSER.add_argument('-i', '--informat', help='Alignment input format (default \
