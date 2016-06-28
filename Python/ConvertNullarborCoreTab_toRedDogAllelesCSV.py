@@ -20,7 +20,8 @@ PARSER.add_argument("-i", "--input", help="Input core.tab file (s)",
                     nargs="+", required=True)
 PARSER.add_argument("-r", "--remove_reference", help="Would you like to remove \
                     the reference sequence from the table [Y, N] ?  NB: this \
-                    may leave you with invariant sites. Default 'N'.", \
+                    may leave you with invariant sites. Default 'N'.  Assumes \
+                    reference is in the third (1-based index) column.", \
                     default='n', required=False)
 ARGS = PARSER.parse_args()
 
