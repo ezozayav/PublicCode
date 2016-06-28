@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-14th Apr 2016
+20160628
 dr.mark.schultzm@gmail.com
 github: schultzm
 Converts tseemann Nullarbor formatted core.tab file to dedwards RedDog 
