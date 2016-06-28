@@ -18,6 +18,10 @@ PARSER = argparse.ArgumentParser(description="Convert a Nullarbor formatted \
                                  formatted file.")
 PARSER.add_argument("-i", "--input", help="Input core.tab file (s)",
                     nargs="+", required=True)
+PARSER.add_argument("-r", "--remove_reference", help="Would you like to remove \
+                    the reference sequence from the table [Y, N] ?  NB: this \
+                    may leave you with invariant sites. Default 'N'.", \
+                    default='n', required=False)
 ARGS = PARSER.parse_args()
 
 def get_contig_names(core_tab_file):
@@ -30,7 +34,7 @@ def get_contig_names(core_tab_file):
         file_sets = set(contigs)
     return file_sets
 
-def split_core_tab(core_tab_file, file_contigs):
+def split_core_tab(core_tab_file, file_contigs, remove_ref):
     """
     Writes out an alleles.csv for each contig in the core_tab_file.
     """
@@ -39,6 +43,8 @@ def split_core_tab(core_tab_file, file_contigs):
         with open(core_tab_file, "r") as input_handle:
             first = next(input_handle)
             first = first.rstrip("\n").split("\t")[1:-4]
+            if 'y' in remove_ref.lower():
+                first.pop(1)
             illegal_chars = '\/:*?"<>|^ '
             cntig_name = i
             for char in illegal_chars:
@@ -49,18 +55,23 @@ def split_core_tab(core_tab_file, file_contigs):
                 for line in input_handle:
                     line_vals = line.rstrip("\n").split("\t")
                     if line_vals[0] == i:
+                        if 'y' in remove_ref.lower():
+                            line_vals.pop(2)
                         output_handle.write(",".join(line_vals[1:-4])+"\n")
+    if 'y' in remove_ref.lower():
+        print '\nRemove reference requested.  You may need to remove ' \
+              'invariant sites.'
 
 for file in ARGS.input:
-    split_core_tab(file, get_contig_names(file))
+    split_core_tab(file, get_contig_names(file), ARGS.remove_reference)
 
 #End message
 int_val = random.randint(1,5)
-mssg1 = "Done. Thanks for using."
-mssg2 = "All done."
-mssg3 = "Done. Check your working directory for the output files."
-mssg4 = "Done. Email dr.mark.schultz@gmail.com for complaints."
-mssg5 = "Done. Now, what does it all mean?"
+mssg1 = "\nDone. Thanks for using.\n"
+mssg2 = "\nAll done.\n"
+mssg3 = "\nDone. Check your working directory for the output files.\n"
+mssg4 = "\nDone. Email dr.mark.schultz@gmail.com for complaints.\n"
+mssg5 = "\nDone. Now, what does it all mean?\n"
 
 if int_val == 1:
     print mssg1
