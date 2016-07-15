@@ -18,7 +18,7 @@ from Bio.Alphabet import generic_dna
 #set up the arguments parser to deal with the command line input
 PARSER = argparse.ArgumentParser(description='Extract subset of taxa from an \
                                  alignment file (BioPython supported \
-                                 formats).')
+                                 formats).  Include or exclude the taxa.')
 PARSER.add_argument('-a', '--alignment_file', help='Feed me the alignment!',
                     required=True)
 PARSER.add_argument('-i', '--informat', help='BioPython supported \
