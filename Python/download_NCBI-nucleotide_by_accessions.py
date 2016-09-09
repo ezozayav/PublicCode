@@ -64,7 +64,7 @@ def main():
     Then run the get_accession function.
     '''
     if ARGS.user_email is None:
-        Entrez.email = str(getpass.getuser())+'@'+str(socket.getfqdn())
+        Entrez.email = getpass.getuser()+'@'+socket.getfqdn()
         print '\nDownload owner defaulting to '+Entrez.email
     if ARGS.user_email != None:
         print '\nDownload owner specified as '+ARGS.user_email
