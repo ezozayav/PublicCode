@@ -11,6 +11,8 @@ date 20160909
 
 #import the modules
 import argparse
+import getpass
+import socket
 import sys
 from Bio import Entrez
 
@@ -22,13 +24,10 @@ PARSER = argparse.ArgumentParser(description='Will pull NCBI files' \
 PARSER.add_argument('-a', '--accession_ids', nargs='+', help='Accession' \
                     ' numbers, white-space delimited', required=True)
 PARSER.add_argument('-e', '--user_email', help='User email address',
-                    required=False)
+                    default=None, required=False)
 PARSER.add_argument('-f', '--file_format', help='File format. Default' \
                     ' = \'fasta\'.', default='fasta', required=False)
 ARGS = PARSER.parse_args()
-
-
-Entrez.email = ARGS.user_email
 
 
 def get_accession():
@@ -61,8 +60,15 @@ def get_accession():
 
 def main():
     '''
-    Main function.
+    Main function.  First tell NCBI who the downloader is via an email address.
+    Then run the get_accession function.
     '''
+    if ARGS.user_email is None:
+        Entrez.email = str(getpass.getuser())+'@'+str(socket.getfqdn())
+        print '\nDownload owner defaulting to '+Entrez.email
+    if ARGS.user_email != None:
+        print '\nDownload owner specified as '+ARGS.user_email
+        Entrez.email = ARGS.user_email
     get_accession()
 
 
