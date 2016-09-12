@@ -2,7 +2,7 @@
 
 
 '''
-Prune BEAST trees by tip name using Dendropy in Python
+Prune BEAST trees by tip name (retaining tips) using Dendropy in Python
 (https://pythonhosted.org/DendroPy/index.html).  Read BEAST trees into
 tree_yielder.  For each tree, retain tips with names matching those on
 the command line.  Save the pruned trees to file, adding the suffix to
@@ -24,7 +24,7 @@ import dendropy
 
 #set up the arguments
 PARSER = argparse.ArgumentParser(description='Prune BEAST trees.')
-PARSER.add_argument('-f', '--tree_file', nargs='+', help='Path to treefile.',
+PARSER.add_argument('-f', '--tree_file', nargs='+', help='Paths to treefiles.',
                     required=True)
 PARSER.add_argument('-t', '--taxa', nargs='+', help='Space-delimited tip names\
                     to retain.', required=True)
