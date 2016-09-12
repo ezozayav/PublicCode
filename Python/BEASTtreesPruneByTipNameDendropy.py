@@ -26,8 +26,8 @@ import dendropy
 PARSER = argparse.ArgumentParser(description='Prune BEAST trees.')
 PARSER.add_argument('-f', '--tree_file', nargs='+', help='Path to treefile.',
                     required=True)
-PARSER.add_argument('-t', '--taxa', nargs='+', help='Space delimited list.',
-                    required=True)
+PARSER.add_argument('-t', '--taxa', nargs='+', help='Space-delimited tip names\
+                    to retain.', required=True)
 PARSER.add_argument('-s', '--suffix', help='File keyword (for output suffix).',
                     required=True)
 ARGS = PARSER.parse_args()
