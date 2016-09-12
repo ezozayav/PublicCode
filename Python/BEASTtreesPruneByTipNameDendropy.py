@@ -2,7 +2,7 @@
 
 
 '''
-Prune BEAST trees by taxon name using Dendropy in Python
+Prune BEAST trees by tip name using Dendropy in Python
 (https://pythonhosted.org/DendroPy/index.html).  Read BEAST trees into
 tree_yielder.  For each tree, retain tips with names matching those on
 the command line.  Save the pruned trees to file, adding the suffix to
