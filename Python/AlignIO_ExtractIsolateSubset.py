@@ -45,7 +45,7 @@ def main():
     outfile_name = ARGS.alignment_file+'_'+str(len(sub))+'isolate_subset.'+\
                ARGS.outformat.lower()
     with open(outfile_name, 'w') as outfile:
-        AlignIO.write(aln, outfile, ARGS.outformat.lower())
+        AlignIO.write(sub, outfile, ARGS.outformat.lower())
         print '\nAlignment written to '+outfile_name+'\n'
 
 
