@@ -20,8 +20,7 @@ import pandas as pd
 
 #set up the argument parser
 PARSER = argparse.ArgumentParser(description="Finds all variants within a \
-                                              designated range of a \
-                                              reference ST")
+                                 designated range of a reference ST")
 PARSER.add_argument('-s', '--st_number', type=int, help='ST', required=True)
 PARSER.add_argument('-v', '--variant_distance', type=int, help='Up to this \
                     many of loci will be different to the reference alleles.',
