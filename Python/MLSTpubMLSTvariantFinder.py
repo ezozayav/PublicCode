@@ -12,7 +12,7 @@ wget https://goo.gl/H8Y6CZ -O EcloSTprofiles.tsv
 
 
 Example usage:
-    python MLSTpubMLSTvariantFinder.py -s 114 -d 1 -t EcloSTprofiles.tsv
+    python MLSTpubMLSTvariantFinder.py -s 114 -v 1 -t EcloSTprofiles.tsv
 
 '''
 
